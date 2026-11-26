@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
+import reviewRoutes from "./routes/reviewRoutes.js";
 
 // Membaca konfigurasi dari file .env
 dotenv.config();
@@ -22,6 +23,9 @@ app.get("/", (req, res) => {
         message: "Selamat datang di SceneIt!"
     });
 });
+
+// Mount Review Routes
+app.use("/api/reviews", reviewRoutes); 
 
 // Menghubungkan database dan menjalankan server
 const startServer = async () => {
